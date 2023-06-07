@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@inject ILogger<Counter> logger;
 
 <PageTitle>Counter</PageTitle>
 
@@ -10,6 +11,21 @@
 
 @code {
     private int currentCount = 0;
+
+    protected override void OnParametersSet()
+    {
+        logger.LogInformation("Parameters are sent");
+    }
+
+    protected override void OnInitialized()
+    {
+        logger.LogInformation("Initializing component");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        logger.LogInformation("Component after initializing");
+    }
 
     private void IncrementCount()
     {
