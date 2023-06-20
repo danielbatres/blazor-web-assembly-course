@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace blazor_web_assembly_course;
 
-public class CategoryService {
+public class CategoryService : ICategoryService {
     private readonly HttpClient Client;
     private readonly JsonSerializerOptions Options;
 
@@ -22,4 +22,8 @@ public class CategoryService {
 
         return JsonSerializer.Deserialize<List<Category>>(content, Options);
     }
+}
+
+public interface ICategoryService {
+    Task<List<Category>> Get();
 }
