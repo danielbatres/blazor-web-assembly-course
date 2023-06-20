@@ -7,6 +7,8 @@
 
 <ModuleTitle Title="Add product"/>
 
+<button class="btn btn-dark" @onclick="@(() => NavigationManager.NavigateTo("/product"))">Go back products</button>
+
 <EditForm Model="@product">
   <div class="row">
     <div class="col-8 form-group">
