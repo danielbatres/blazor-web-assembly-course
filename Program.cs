@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using blazor_web_assembly_course;
+using Blazored.Toast;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -10,6 +11,7 @@ var apiUrl = builder.Configuration.GetValue<string>("apiUrl");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiUrl) });
 
+builder.Services.AddBlazoredToast();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 

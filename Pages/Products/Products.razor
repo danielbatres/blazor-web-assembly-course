@@ -3,6 +3,7 @@
 @inject IProductService productService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@inject IToastService toastService
 
 <PageTitle>Products</PageTitle>
 
@@ -43,6 +44,7 @@
     if (!await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to remove {product.Title}")) return;
     
     await productService.Delete(product.Id);
+    toastService.ShowSuccess("Deleted product");
     await GetProducts();
   }
 }
